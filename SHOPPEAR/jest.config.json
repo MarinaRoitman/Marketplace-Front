@@ -1,0 +1,7 @@
+{
+  "transformIgnorePatterns": ["node_modules/(?!(npm-package|names|go-here)/)"],
+  "moduleNameMapper": {
+    "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
+  },
+  "testEnvironment": "jsdom"
+}
