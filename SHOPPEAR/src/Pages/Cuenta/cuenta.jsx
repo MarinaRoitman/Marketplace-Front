@@ -182,6 +182,13 @@ function Cuenta() {
     const [nuevoStock, setNuevoStock] = useState(0)
     const [selectedCategory, setSelectedCategory] = useState('')
 
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setNuevaImg(file);
+        }
+    };
+
     const crearProducto = () => {
         dispatch(fetchCrearProducto(nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevaImg, nuevoStock, selectedCategory, datosUsuario.id))
         setNuevoNombre('')
@@ -386,7 +393,7 @@ return (
             </Form.Group>
             <Form.Label>Agregar Foto</Form.Label>
             <Form.Group controlId="formFile">
-            <Form.Control type="file" style={{width:'65%'}}/>
+            <Form.Control type="file" style={{width:'65%'}} onChange={handleImageUpload}/>
             </Form.Group>
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <ModalPublicarProd crearProducto={crearProducto}></ModalPublicarProd>

@@ -50,7 +50,7 @@ const Example = ({ id, name, price, img, description }) => {
     }
 
     const modificarProducto = () => {
-        dispatch(fetchModificarProducto(id, nombre, productDescription, precio, imagenSubida, mount, idCategoria))
+        //dispatch(fetchModificarProducto(id, nombre, productDescription, precio, imagenSubida, mount, idCategoria))
         handleClose()
     };
 
@@ -59,22 +59,7 @@ const Example = ({ id, name, price, img, description }) => {
         dispatch(fetchProducts())
         handleClose()
     };
-    /* esta funcion convierte la imagen a un objeto blob
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const arrayBuffer = reader.result;
-                const blob = new Blob([arrayBuffer], { type: file.type });
-                setImagenSubida(blob);
-            };
-            reader.readAsArrayBuffer(file);
-        }
-    };
-    */
-   
-    /* esta funcion convierte la imagen a un blob crudo*/
+    /*
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -84,6 +69,14 @@ const Example = ({ id, name, price, img, description }) => {
                 setImagenSubida(base64String);
             };
             reader.readAsDataURL(file);
+        }
+    };
+    */
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setImagenSubida(file);
         }
     };
 
