@@ -330,15 +330,19 @@ return (
                                     <h4 style={{ marginLeft: '0.2em' }}>Ver Publicaciones</h4>
                                 </div>
                                 <div className='products'>
-                                    {productos.map(prod =>
-                                        <CardEditable
-                                            key={prod.id}
-                                            id={prod.id}
-                                            name={prod.nombre}
-                                            price={prod.precio}
-                                            img={prod.img}
-                                            description={prod.descripcion}
-                                        />
+                                    {productos.length > 0 ? (
+                                        productos.map(prod => (
+                                            <CardEditable
+                                                key={prod.id}
+                                                id={prod.id}
+                                                name={prod.nombre}
+                                                price={prod.precio}
+                                                img={prod.img}
+                                                description={prod.descripcion}
+                                            />
+                                        ))
+                                    ) : (
+                                        <p>No tenes productos publicados</p>
                                     )}
                                 </div>
                             </Tab.Pane>

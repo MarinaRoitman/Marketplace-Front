@@ -53,7 +53,7 @@ export const fetchProductosByIdUsuario = (id) => {
       dispatch({ type: 'CATEGORIES_FETCH_PRODUCTOS_BY_ID_USUARIO', payload: data });
       return data
     } catch (error) {
-      console.error(error);
+      console.error(error, 'error en el fetch');
     }
     return null
   };
@@ -68,7 +68,7 @@ export const fetchEliminarProducto = (id) => {
 
     try {
       const response = (await fetch("http://localhost:4002/auth/productos?idProducto=" + id, requestOptions))
-
+      /*
       const requestOptions2 = {
         method: "GET",
         redirect: "follow",
@@ -77,6 +77,7 @@ export const fetchEliminarProducto = (id) => {
       const data2 = await response2.json()
       dispatch({ type: 'PRODUCTS_FETCH_SUCCESS', payload: data2 });
       return data2
+      */
     } catch (error) {
       console.error(error, "error en algun fetch");
     }
