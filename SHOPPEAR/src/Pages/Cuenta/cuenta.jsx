@@ -145,9 +145,7 @@ function Cuenta() {
     const categorias = useSelector(state => state.products.categories)
     const productos = useSelector(state => state.products.productosByIdUsuario);
     const products = useSelector((state) => state.products.products);
-    useEffect(() => {
-        dispatch(fetchProductosByIdUsuario(datosUsuario.id))
-    }, [products]);
+    
     
     const [selectedProduct, setSelectedProduct] = useState('');
     const [discountPercentage, setDiscountPercentage] = useState(''); 
@@ -160,7 +158,10 @@ function Cuenta() {
     useEffect(() => {
         dispatch(fetchProducts())
     }, [productos]);
-
+    
+    useEffect(() => {
+        dispatch(fetchProductosByIdUsuario(datosUsuario.id))
+    }, [products]);
     
 
     const handleCategoryChange = (e) => {
