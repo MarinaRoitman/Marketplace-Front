@@ -185,9 +185,18 @@ function Cuenta() {
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
-            setNuevaImg(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const base64String = reader.result.replace(/^data:.+;base64,/, '');
+                setNuevaImg(base64String);
+            };
+            reader.readAsDataURL(file);
         }
     };
+
+    useEffect(() => {
+        console.log(nuevaImg, 'nueva img')
+    }, [nuevaImg]);
 
     const crearProducto = () => {
         dispatch(fetchCrearProducto(nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevaImg, nuevoStock, selectedCategory, datosUsuario.id))

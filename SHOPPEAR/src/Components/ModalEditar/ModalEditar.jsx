@@ -50,7 +50,7 @@ const Example = ({ id, name, price, img, description }) => {
     }
 
     const modificarProducto = () => {
-        //dispatch(fetchModificarProducto(id, nombre, productDescription, precio, imagenSubida, mount, idCategoria))
+        dispatch(fetchModificarProducto(id, nombre, productDescription, precio, imagenSubida, mount, idCategoria))
         handleClose()
     };
 
@@ -59,7 +59,7 @@ const Example = ({ id, name, price, img, description }) => {
         dispatch(fetchProducts())
         handleClose()
     };
-    /*
+    
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -71,14 +71,7 @@ const Example = ({ id, name, price, img, description }) => {
             reader.readAsDataURL(file);
         }
     };
-    */
-
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setImagenSubida(file);
-        }
-    };
+    
 
     useEffect(() => {
         console.log(imagenSubida)
