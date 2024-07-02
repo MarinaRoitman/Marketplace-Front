@@ -74,7 +74,6 @@ const Example = ({ id, name, price, img, description }) => {
     
 
     useEffect(() => {
-        console.log(imagenSubida)
     }, [imagenSubida]);
 
 return (

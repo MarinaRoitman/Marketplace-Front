@@ -15,15 +15,11 @@ const Registro = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate()
-    //const user = useSelector(state => state.auth.user)
     const datosUsuario = useSelector(state => state.auth.datosUsuario)
-
+    const token = useSelector(state => state.auth.token)
     const crearCuenta = () => {
         if (password == confirmPassword){
             dispatch(crearUsuario(nombre, apellido, email, password, direccion, usuario))
-            dispatch(checkLogin(email, password))
-            dispatch(getUsuarioById(email))
-            navigate('/')
             
         } else {
             console.log("Las contraseñas no coinciden")
@@ -31,7 +27,17 @@ const Registro = () => {
     };
 
     useEffect(() => {
-    }, [datosUsuario]);
+        if (token){
+            dispatch(getUsuarioById(email))
+        }
+    }, [token]);
+
+    useEffect(() => {
+        if (datosUsuario != null) {
+            navigate('/')
+        }
+    }, [datosUsuario])
+
 
     return (
         <Container style={{ boxShadow: 'rgb(219 219 219) 0px 0px 10px',borderRadius: '1em', padding: '2em',width: '35%'}}>

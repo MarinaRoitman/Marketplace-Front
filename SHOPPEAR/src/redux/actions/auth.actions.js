@@ -44,7 +44,7 @@ export const checkLogin = (mail, password) => {
         body: raw,
         redirect: "follow"
       };
-        
+      
       try{
           const response = await fetch("http://localhost:4002/auth/authenticate", requestOptions)
           const data = await response.json()

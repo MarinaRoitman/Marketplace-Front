@@ -196,7 +196,6 @@ function Cuenta() {
     };
 
     useEffect(() => {
-        console.log(nuevaImg, 'nueva img')
     }, [nuevaImg]);
 
     const crearProducto = () => {
