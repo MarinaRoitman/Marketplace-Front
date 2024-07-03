@@ -4,12 +4,13 @@
     // ya que seria incorrecto encontrarlo en el carrito con menos de un prod seleccionado. (1 Test)
     // En cambio, el botón para descontar la cantidad del producto si cumple con su función cuando la cantidad
     // es mayor a 1. (2 Test)
+    // 
 
     import React from 'react';
     import { render, fireEvent } from '@testing-library/react';
     import BotonCantidad from '../Components/BotonCantidad/botonCantidad';
     
-    test('permite descontar cuando es mayor a 1', () => {
+    test('Test 1 - permite descontar cuando es mayor a 1', () => {
         const setMount = jest.fn();
         const onClick = jest.fn();
         const { getByText } = render(<BotonCantidad mount={2} setMount={setMount} onClick={onClick} />);
@@ -21,7 +22,7 @@
         expect(onClick).toHaveBeenCalledWith(1);
     });
     
-    test('no permite descontar cuando es 1', () => {
+    test('Test 2 - no permite descontar cuando es 1', () => {
         const setMount = jest.fn();
         const onClick = jest.fn();
         const { getByText } = render(<BotonCantidad mount={1} setMount={setMount} onClick={onClick} />);
@@ -31,4 +32,16 @@
     
         expect(setMount).not.toHaveBeenCalled();
         expect(onClick).not.toHaveBeenCalled();
+    });
+
+    test('Test 3 - debe incrementar el contador cuando se hace clic en el botón de incremento', () => {
+        const setMount = jest.fn();
+        const onClick = jest.fn();
+        const { getByText } = render(<BotonCantidad mount={1} setMount={setMount} onClick={onClick} />);
+
+        const incrementButton = getByText('+');
+        fireEvent.click(incrementButton);
+
+        expect(setMount).toHaveBeenCalledWith(2);
+        expect(onClick).toHaveBeenCalledWith(2);
     });
